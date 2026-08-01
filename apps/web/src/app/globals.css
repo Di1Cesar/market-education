@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nunito:wght@400;700;800&family=Courier+Prime:wght@400;700&display=swap");
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; margin: 0; }
+
+body {
+  background: #F5F2EB;
+  font-family: "Nunito", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { touch-action: manipulation; }
+
+/* Evita o zoom automático do iOS em inputs */
+input { font-size: 16px; }
+
+*:focus-visible { outline: 3px solid #1A5FC8; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

@@ -6,8 +6,16 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // O front (Next) roda em outra porta, então precisa de CORS liberado.
+  // Também aceita qualquer subdomínio ngrok, já que a URL pública muda a cada túnel novo.
+  const origensFixas = process.env.WEB_ORIGIN?.split(",") ?? ["http://localhost:3000"];
   app.enableCors({
-    origin: process.env.WEB_ORIGIN?.split(",") ?? "http://localhost:3000",
+    origin: (origin, callback) => {
+      const permitido =
+        !origin ||
+        origensFixas.includes(origin) ||
+        /^https:\/\/.*\.ngrok(-free)?\.app$/.test(origin);
+      callback(permitido ? null : new Error("Origem não permitida pelo CORS"), permitido);
+    },
   });
 
   // Todo DTO passa por validação e descarta campos não declarados.

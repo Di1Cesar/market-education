@@ -160,7 +160,7 @@ export function App() {
               NÃO CONSEGUI FALAR COM O SERVIDOR
             </div>
             <div style={{ fontFamily: FN, fontSize: 14, color: C.suave, marginBottom: 16 }}>
-              Verifique se a API (NestJS) está rodando. Detalhe: {erro}
+              Verifique sua conexão com a internet. Detalhe: {erro}
             </div>
             <Btn onClick={() => window.location.reload()}>TENTAR DE NOVO</Btn>
           </Bloco>

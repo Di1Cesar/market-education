@@ -1,6 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  datasources: {
+    db: { url: process.env.DIRECT_URL },
+  },
+});
 
 const PRODUTOS = [
   { name: "MAÇÃ", emoji: "🍎", priceCents: 150, stock: 12 },

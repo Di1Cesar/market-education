@@ -20,3 +20,23 @@ input { font-size: 16px; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Impressão de um cupom individual: some com tudo, exceto o cupom marcado. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .cupom-imprimindo,
+  .cupom-imprimindo * {
+    visibility: visible;
+  }
+  .cupom-imprimindo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .sem-impressao {
+    display: none !important;
+  }
+}

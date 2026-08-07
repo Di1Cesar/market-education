@@ -8,6 +8,20 @@ import { Bloco, Btn } from "./ui";
 import { Caixa } from "./Caixa";
 import { Produtos } from "./Produtos";
 
+function imprimirCupom(e: React.MouseEvent<HTMLButtonElement>) {
+  const card = e.currentTarget.closest(".cupom-card");
+  if (!(card instanceof HTMLElement)) return;
+
+  const limpar = () => {
+    card.classList.remove("cupom-imprimindo");
+    window.removeEventListener("afterprint", limpar);
+  };
+  window.addEventListener("afterprint", limpar);
+
+  card.classList.add("cupom-imprimindo");
+  window.print();
+}
+
 function Cupons({ cupons }: { cupons: Cupom[] }) {
   if (cupons.length === 0) {
     return (
@@ -46,6 +60,7 @@ function Cupons({ cupons }: { cupons: Cupom[] }) {
         {cupons.map((c) => (
           <div
             key={c.id}
+            className="cupom-card"
             style={{ background: "#FFF", border: `2px solid ${C.linha}`, borderRadius: 4, padding: 18, fontFamily: FM, fontSize: 13, color: C.tinta, boxShadow: `3px 3px 0 ${C.linha}` }}
           >
             <div style={{ textAlign: "center", letterSpacing: 2, marginBottom: 4, fontWeight: 700 }}>
@@ -71,6 +86,13 @@ function Cupons({ cupons }: { cupons: Cupom[] }) {
             <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: C.suave }}>
               <span>TROCO</span><span>{R$(c.changeCents)}</span>
             </div>
+            <button
+              className="sem-impressao"
+              onClick={imprimirCupom}
+              style={{ marginTop: 14, width: "100%", padding: "8px 0", borderRadius: 6, border: `2px solid ${C.tinta}`, background: "transparent", color: C.tinta, fontFamily: FF, fontSize: 12, letterSpacing: "0.06em", cursor: "pointer" }}
+            >
+              🖨️ IMPRIMIR
+            </button>
           </div>
         ))}
       </div>

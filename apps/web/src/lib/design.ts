@@ -26,7 +26,12 @@ export const CATEGORIAS_EMOJI = [
     id: "alimento", label: "ALIMENTO", icone: "🍎",
     emojis: ["🍎","🍌","🍇","🍊","🍓","🍉","🥕","🍅","🌽","🥦",
              "🥛","🧃","💧","🍞","🥐","🧀","🥚","🍪","🍫","🍿",
-             "🍬","🧁","🥪","🍕","🥤","🍦","🎂","🍩","🥜","🧆"],
+             "🍬","🧁","🥪","🍕","🥤","🍦","🎂","🍩","🥜","🧆",
+             "🍚","🫘"],
+  },
+  {
+    id: "higiene", label: "HIGIENE", icone: "🧼",
+    emojis: ["🧼","🧴"],
   },
   {
     id: "brinquedo", label: "BRINQUEDO", icone: "🧸",
